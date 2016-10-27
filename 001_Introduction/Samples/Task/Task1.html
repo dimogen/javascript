@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="itvdnNews">
+<head>
+    <title>Task 1</title>
+    <script src="../Libraries/angular.js"></script>
+    <script src="model.js"></script>
+
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <script>
+        var itvdnNews = angular.module('itvdnNews', []);
+
+        itvdnNews.controller("NewsListCtrl", function ($scope) {
+            $scope.data = model;
+        });
+    </script>
+</head>
+<body ng-controller="NewsListCtrl">
+    <div class="container">
+        <div class="page-header">
+            <h1>
+                ITVDN News
+            </h1>
+        </div>
+        <div class="jumbotron" ng-repeat="new in data">
+            <h2>{{new.title}}</h2>
+            <p>{{new.published}}</p>
+            <p>{{new.description}}</p>
+            <a href="{{new.link}}" class="btn btn-primary">Читать дальше</a>
+        </div>
+    </div>
+</body>
+</html>

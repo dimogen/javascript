@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="calculator">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link href="../Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap.css" rel="stylesheet" />
+    <script src="../Libraries/angular.js"></script>
+    <script>
+        var calculator = angular.module("calculator", []);
+
+        calculator.controller("CalculatorCtrl", function ($scope) {
+            $scope.first = '';
+            $scope.second = '';
+            $scope.result = '';
+
+            $scope.plus = function () {
+                $scope.result = parseInt($scope.first) + parseInt($scope.second);
+            };
+
+            $scope.minus = function () {
+                $scope.result = $scope.first - $scope.second;
+            };
+
+            $scope.multiply = function () {
+                $scope.result = $scope.first * $scope.second;
+            };
+
+            $scope.delete = function () {
+                $scope.result = $scope.first / $scope.second;
+            };
+        });
+    </script>
+</head>
+<body ng-controller="CalculatorCtrl">
+    <div class="container">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="first">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="second">
+            </div>
+            <div class="form-group">
+                <div class="btn btn-default" ng-click="plus()">+</div>
+                <div class="btn btn-default" ng-click="minus()">-</div>
+                <div class="btn btn-default" ng-click="multiply()">*</div>
+                <div class="btn btn-default" ng-click="delete()">/</div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Result: {{result}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
